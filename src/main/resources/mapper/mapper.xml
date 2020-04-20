@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper">
+
+	<resultMap type="com.mvc.poi.vo.EmpVO" id="selectEmpListMap">
+		<id column="EMPNO" property="EMPNO" javaType="java.lang.Double"/>
+		<id column="ENAME" property="ENAME" />
+		<id column="JOB" property="JOB" />
+		<id column="MGR" property="MGR" javaType="java.lang.Double"/>
+		<id column="HIREDATE" property="HIREDATE" />
+		<id column="SAL" property="SAL" javaType="java.lang.Double"/>
+		<id column="COMM" property="COMM" javaType="java.lang.Double"/>
+		<id column="DEPTNO" property="DEPTNO" javaType="java.lang.Double"/>
+	</resultMap>
+
+	<select id="selectEmpList" resultMap="selectEmpListMap">
+		SELECT
+		       EMPNO 
+		     , ENAME
+		     , JOB
+		     , NVL(MGR,0) MGR
+		     , TO_CHAR(HIREDATE,'YYYY-MM-DD') HIREDATE
+		     , NVL(SAL,0) SAL
+		     , NVL(COMM,0) COMM
+		     , NVL(DEPTNO,0) DEPTNO
+		FROM
+		       EMP
+    </select>
+</mapper>
