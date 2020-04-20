@@ -34,7 +34,7 @@ public class ExcelServiceImpl implements ExcelService {
 
 		SXSSFWorkbook wb = new SXSSFWorkbook();
 		SXSSFSheet sheet = wb.createSheet("empList");
-		//wb.setCompressTempFiles(true); 용량 너무크면 임시파일 압축 성능저하!!
+		wb.setCompressTempFiles(true); //임시파일(gb) 압축해서 메모리 아끼기 (성능 저하)
 		
 		sheet.trackAllColumnsForAutoSizing();
 		
