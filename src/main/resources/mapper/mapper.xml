@@ -27,5 +27,34 @@
 		     , NVL(DEPTNO,0) DEPTNO
 		FROM
 		       EMP
+		WHERE 
+			   ROWNUM <![CDATA[ <= ]]> 350000
     </select>
+    
+    <insert id="insertEmpList" parameterType="map">
+    	  INSERT 
+		    INTO EMP 
+			(
+				EMPNO
+				,ENAME
+				,JOB
+				,MGR
+				,HIREDATE
+				,SAL
+				,COMM
+				,DEPTNO
+			)
+			VALUES
+			(	
+				(SELECT MAX(EMPNO)+1 FROM EMP)
+				, #{ENAME}
+				, #{JOB}
+				, #{MGR}
+				,sysdate
+				, #{SAL}
+				, #{COMM}
+				, #{DEPTNO}
+			)
+    </insert>
+    
 </mapper>

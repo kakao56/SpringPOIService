@@ -6,4 +6,6 @@ public interface ExcelService {
 
 	void downEmpList(HttpServletResponse response);
 
+	void upEmpList(HttpServletResponse response);
+
 }
